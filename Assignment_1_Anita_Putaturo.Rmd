@@ -1,0 +1,65 @@
+---
+title: "Assignment_1_Anita_Putaturo"
+author: "Anita Putaturo"
+date: "2025-09-05"
+output: pdf_document
+---
+
+
+```{r}
+
+options(repos = c(CRAN = "https://cloud.r-project.org"))
+library(rmarkdown)
+library(ggplot2)
+```
+
+
+1. The dataset I chose is from Kaggle: https://www.kaggle.com/datasets/rohitgrewal/airlines-flights-data
+The data in this dataset has a decent mix of quantitative and qualitative variables.
+
+2. Importing the dataset and naming it "airlines"
+```{r}
+airlines<- read.csv("C:\\Users\\aputa\\OneDrive\\Documents\\Graduate Courses\\Fundamentals of Machine Learning F25\\Homework Assignments\\Assignment 1 Dataset\\airline_data.csv")
+```
+
+
+3. Printing the dataset
+```{r}
+print(airlines)
+```
+
+3. Printing descriptive statistics for numerical variables
+```{r}
+summary(airlines[,c("duration", "price")])
+
+```
+Printing descriptive statistics for categorical variables: count of airline per arrival time category
+```{r}
+table(airlines$airline, airlines$arrival_time)
+```
+4. Add a new column in the table called "duration_mins" to convert the duration from hours to minutes.
+```{r}
+airlines$duration_mins<- airlines$duration*60
+print(airlines)
+
+```
+
+5. Plotting a histogram of duration in minutes. Data is skewed
+```{r}
+hist(airlines$duration,
+     main = "Histogram of Duration in Hours",
+     xlab = "Hours",
+     col = "lightblue")
+```
+
+Scatter plot
+```{r}
+plot(airlines$duration, airlines$price,
+     main = "Price versus Duration",
+     xlab = "price",
+     ylab = "Flight Duration (hours)")
+```
+
+
+
+
